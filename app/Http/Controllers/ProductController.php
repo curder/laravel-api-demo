@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Resources\Product\ProductResource;
 use App\Http\Resources\Product\ProductCollection;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class ProductController
@@ -13,6 +15,14 @@ use App\Http\Resources\Product\ProductCollection;
  */
 class ProductController extends Controller
 {
+    /**
+     * ProductController constructor.
+     */
+    public function __construct()
+    {
+        $this->middleware('auth:api')->only(['store', 'update']);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -35,12 +45,23 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @param  ProductRequest $request
+     * @return Response
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
-        //
+        $product = new Product;
+        $product->name = $request->name;
+        $product->detail = $request->description;
+        $product->stock = $request->stock;
+        $product->price = $request->price;
+        $product->name = $request->name;
+        $product->discount = $request->discount;
+
+        $product->save();
+        return response([
+            'data' => new ProductResource($product),
+        ], Response::HTTP_CREATED);
     }
 
     /**
