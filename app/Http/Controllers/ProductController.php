@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\ProductNotBelongsToUserException;
 use App\Http\Requests\ProductRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -95,6 +96,8 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
+        $this->productUserCheck($product);
+
         $request['detail'] = $request->description;
         unset($request['description']);
         $product->update($request->all());
@@ -113,5 +116,16 @@ class ProductController extends Controller
     {
         $product->delete();
         return response(null, Response::HTTP_NO_CONTENT);
+    }
+
+    /**
+     * @param $product
+     * @throws ProductNotBelongsToUserException
+     */
+    protected function productUserCheck($product)
+    {
+        if(auth()->id() !== $product->user_id) {
+            throw new ProductNotBelongsToUserException;
+        }
     }
 }

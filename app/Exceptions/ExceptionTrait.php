@@ -13,18 +13,18 @@ trait ExceptionTrait
 {
     /**
      * @param $request
-     * @param $exception
+     * @param $e
      * @return mixed
      */
-    public function apiException($request, $exception)
+    public function apiException($request, $e)
     {
-        if ($this->isModelNotFound($exception)) {
+        if ($this->isModelNotFound($e)) {
             return $this->modelResponse();
         }
-        if ($this->isHttpNotFound($exception)) {
+        if ($this->isHttpNotFound($e)) {
             return $this->httpResponse();
         }
-        return parent::render($request, $exception);
+        return parent::render($request, $e);
     }
 
     /**

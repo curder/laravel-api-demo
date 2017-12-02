@@ -2,6 +2,7 @@
 
 use App\Models\Product;
 use App\Models\Review;
+use App\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,6 +14,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        factory(User::class, 5)->create();
         factory(Product::class, 50)->create();
         factory(Review::class, 300)->create();
 
