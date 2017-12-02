@@ -107,10 +107,11 @@ class ProductController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Product $product
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        return response(null, Response::HTTP_NO_CONTENT);
     }
 }

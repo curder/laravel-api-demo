@@ -92,6 +92,33 @@
 						"description": ""
 					},
 					"response": []
+				},
+				{
+					"name": "Product Destory",
+					"request": {
+						"url": "http://laravel-api-demo.dev/api/products/1",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
 				}
 			]
 		},
