@@ -32,6 +32,66 @@
 						"description": ""
 					},
 					"response": []
+				},
+				{
+					"name": "Product Create",
+					"request": {
+						"url": "http://laravel-api-demo.dev/api/products",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Iphone X\",\n\t\"description\": \"The Best ever phone with face ID\",\n\t\"price\": 100,\n\t\"stock\": 10,\n\t\"discount\": 50\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Product Update",
+					"request": {
+						"url": "http://laravel-api-demo.dev/api/products/1",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Iphone 8\",\n\t\"description\": \"The Best ever phone with face ID\",\n\t\"price\": 100,\n\t\"stock\": 10,\n\t\"discount\": 20\n}"
+						},
+						"description": ""
+					},
+					"response": []
 				}
 			]
 		},
