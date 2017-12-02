@@ -4,17 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Http\Resources\Product\ProductResource;
+use App\Http\Resources\Product\ProductCollection;
 
+/**
+ * Class ProductController
+ * @package App\Http\Controllers
+ */
 class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        return ProductCollection::collection(Product::paginate(20));
     }
 
     /**
@@ -30,7 +35,7 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -41,18 +46,18 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
+     * @param  \App\Models\Product $product
+     * @return ProductResource
      */
     public function show(Product $product)
     {
-        //
+        return new ProductResource($product);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Product $product
      * @return \Illuminate\Http\Response
      */
     public function edit(Product $product)
@@ -63,8 +68,8 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Product  $product
+     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Models\Product $product
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Product $product)
@@ -75,7 +80,7 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Product $product
      * @return \Illuminate\Http\Response
      */
     public function destroy(Product $product)
