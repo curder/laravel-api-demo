@@ -136,6 +136,96 @@
 						"description": ""
 					},
 					"response": []
+				},
+				{
+					"name": "Review Create",
+					"request": {
+						"url": "http://laravel-api-demo.dev/api/products/20/reviews",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"customer\": \"anor\",\n\t\"star\": 3,\n\t\"review\": \"best thing on review\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Review Update",
+					"request": {
+						"url": "http://laravel-api-demo.dev/api/products/21/reviews/38",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"customer\": \"anor\",\n\t\"star\": 3,\n\t\"review\": \"best thing on review\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Review Destory",
+					"request": {
+						"url": "http://laravel-api-demo.dev/api/products/20/reviews/259",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
 				}
 			]
 		},
@@ -162,7 +252,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"grant_type\": \"password\",\n\t\"client_id\" : 2,\n\t\"client_secret\": \"o6U6ZaH0KDPwYSo35xAdxuutauP1JZPB4xOUg43z\",\n\t\"username\": \"curder@foxmail.com\",\n\t\"password\": \"aaaaaa\"\n}"
+							"raw": "{\n\t\"grant_type\": \"password\",\n\t\"client_id\" : 2,\n\t\"client_secret\": \"HRdHAzuiAcngvWtvNg10NdIVwQNynOPUnenwWGO2\",\n\t\"username\": \"curder@foxmail.com\",\n\t\"password\": \"secret\"\n}"
 						},
 						"description": ""
 					},
