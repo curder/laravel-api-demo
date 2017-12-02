@@ -20,6 +20,7 @@ class ReviewController extends Controller
         return ReviewResource::collection($product->reviews);
     }
 
+
     /**
      * Show the form for creating a new resource.
      *

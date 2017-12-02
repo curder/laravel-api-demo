@@ -1,0 +1,87 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Laravel-Api-Demo",
+		"_postman_id": "7e7776c0-8b25-c3d2-4a9e-388b153765de",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Products",
+			"description": "",
+			"item": [
+				{
+					"name": "Product All",
+					"request": {
+						"url": "http://laravel-api-demo.dev/api/products",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Product Show",
+					"request": {
+						"url": "http://laravel-api-demo.dev/api/products/1",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reviews",
+			"description": "",
+			"item": [
+				{
+					"name": "Reviews All",
+					"request": {
+						"url": "http://laravel-api-demo.dev/api/products/1/reviews",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "OAuth",
+			"description": "",
+			"item": [
+				{
+					"name": "Get Token",
+					"request": {
+						"url": "http://laravel-api-demo.dev/oauth/token",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"grant_type\": \"password\",\n\t\"client_id\" : 2,\n\t\"client_secret\": \"o6U6ZaH0KDPwYSo35xAdxuutauP1JZPB4xOUg43z\",\n\t\"username\": \"curder@foxmail.com\",\n\t\"password\": \"aaaaaa\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
