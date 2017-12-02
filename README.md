@@ -11,4 +11,5 @@ php artisan key:generate
 
 cp .env.example .env
 ```
-change your database connection info, and run `php artisan migrate`
+change your database connection info, and run `php artisan migrate:refresh --seed`
+
