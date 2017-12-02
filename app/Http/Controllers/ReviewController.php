@@ -14,7 +14,7 @@ class ReviewController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth:api')->only(['store']);
+        $this->middleware('auth:api')->only(['store', 'update', 'destroy']);
     }
 
     /**
@@ -83,22 +83,29 @@ class ReviewController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
+     * @param Product $product
      * @param  \App\Models\Review $review
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
-    public function update(Request $request, Review $review)
+    public function update(Request $request, Product $product, Review $review)
     {
-        //
+        $review->update($request->all());
+
+        return response([
+            'data' => new ReviewResource($review),
+        ], Response::HTTP_CREATED);
     }
 
     /**
      * Remove the specified resource from storage.
      *
+     * @param Product $product
      * @param  \App\Models\Review $review
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
-    public function destroy(Review $review)
+    public function destroy(Product $product, Review $review)
     {
-        //
+        $review->delete();
+        return response(null, Response::HTTP_NO_CONTENT);
     }
 }
