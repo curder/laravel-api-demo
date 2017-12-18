@@ -24,7 +24,6 @@ we can through postmen to send url `http://laravel-api-demo.dev/oauth/token`.
 - `Headers`
 
 ```
-Accept:application/json
 Content-Type:application/json
 ```
 
