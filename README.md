@@ -39,3 +39,13 @@ to get the `Authorization` value.
 when we insert, update or delete data will use it.
 
 some postman.json data is [here](database/Laravel-Api-Demo.postman_collection.json)
+
+## Some Urls 
+
+```
+GET /api/lessons Lesson List Data.
+GET /api/lessons/1 Lesson Detail Data.
+GET /api/tags Tag List Data.
+GET /api/tags/1 Tag Detail Data.
+...
+```
