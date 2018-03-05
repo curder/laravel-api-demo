@@ -47,5 +47,6 @@ GET /api/lessons Lesson List Data.
 GET /api/lessons/1 Lesson Detail Data.
 GET /api/tags Tag List Data.
 GET /api/tags/1 Tag Detail Data.
+GET /api/lesson/1/tags Lesson and Tag Relation Ship.
 ...
 ```
