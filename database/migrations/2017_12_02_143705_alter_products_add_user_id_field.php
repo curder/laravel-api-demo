@@ -14,7 +14,7 @@ class AlterProductsAddUserIdField extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->unsignedInteger('user_id')->after('id');
+            $table->unsignedInteger('user_id')->nullable()->after('id');
         });
     }
 
