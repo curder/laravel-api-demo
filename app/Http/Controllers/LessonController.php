@@ -16,7 +16,7 @@ class LessonController extends Controller {
 		$lessons = Lesson::all();
 
 		return Response::json( [
-			'data' => $lessons->toArray()
+			'data' => $this->transformCollection( $lessons ),
 		], 404 );
 	}
 
@@ -59,7 +59,7 @@ class LessonController extends Controller {
 		}
 
 		return Response::json( [
-			'date' => $lesson->toArray()
+			'date' => $this->transform( $lesson )
 		], 200 );
 	}
 
@@ -95,5 +95,18 @@ class LessonController extends Controller {
 	 */
 	public function destroy( $id ) {
 		//
+	}
+
+	private function transformCollection( $lessons ) {
+		return array_map( [ $this, 'transform' ], $lessons->toArray() );
+	}
+
+	private function transform( $lesson ) {
+		return [
+			'title'    => $lesson['title'],
+			'body'     => $lesson['body'],
+			'active'   => (bool) $lesson['some_bool'],
+			'show_url' => route( 'lessons.show', $lesson['id'] ),
+		];
 	}
 }
