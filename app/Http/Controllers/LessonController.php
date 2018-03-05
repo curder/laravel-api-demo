@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
  *
  * @package App\Http\Controllers
  */
-class LessonController extends Controller {
+class LessonController extends ApiController {
 	/**
 	 * @var \App\Http\Transformers\LessonTransformer
 	 */
@@ -36,18 +36,9 @@ class LessonController extends Controller {
 	public function index() {
 		$lessons = Lesson::all();
 
-		return Response::json( [
+		return $this->respond( [
 			'data' => $this->lessonTransformer->transformCollection( $lessons->all() ),
-		], 404 );
-	}
-
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function create() {
-		//
+		] );
 	}
 
 	/**
@@ -55,7 +46,7 @@ class LessonController extends Controller {
 	 *
 	 * @param  \Illuminate\Http\Request $request
 	 *
-	 * @return \Illuminate\Http\Response
+	 * @return void
 	 */
 	public function store( Request $request ) {
 		//
@@ -72,27 +63,12 @@ class LessonController extends Controller {
 		$lesson = Lesson::find( $id );
 
 		if ( ! $lesson ) {
-			return Response::json( [
-				'error' => [
-					'message' => 'Lesson dose not exists.',
-				],
-			], 404 );
+			return $this->respondNotFound( 'Lesson dose not exists.' );
 		}
 
-		return Response::json( [
+		return $this->respond( [
 			'date' => $this->lessonTransformer->transform( $lesson )
-		], 200 );
-	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int $id
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function edit( $id ) {
-		//
+		] );
 	}
 
 	/**
