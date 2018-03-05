@@ -2,11 +2,32 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Transformers\LessonTransformer;
 use App\Lesson;
 use \Response;
 use Illuminate\Http\Request;
 
+/**
+ * Class LessonController
+ *
+ * @package App\Http\Controllers
+ */
 class LessonController extends Controller {
+	/**
+	 * @var \App\Http\Transformers\LessonTransformer
+	 */
+	protected $lessonTransformer;
+
+	/**
+	 * LessonController constructor.
+	 *
+	 * @param LessonTransformer $lessonTransformer
+	 */
+	public function __construct( LessonTransformer $lessonTransformer ) {
+		$this->lessonTransformer = $lessonTransformer;
+	}
+
+
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -16,7 +37,7 @@ class LessonController extends Controller {
 		$lessons = Lesson::all();
 
 		return Response::json( [
-			'data' => $this->transformCollection( $lessons ),
+			'data' => $this->lessonTransformer->transformCollection( $lessons->all() ),
 		], 404 );
 	}
 
@@ -59,7 +80,7 @@ class LessonController extends Controller {
 		}
 
 		return Response::json( [
-			'date' => $this->transform( $lesson )
+			'date' => $this->lessonTransformer->transform( $lesson )
 		], 200 );
 	}
 
@@ -95,18 +116,5 @@ class LessonController extends Controller {
 	 */
 	public function destroy( $id ) {
 		//
-	}
-
-	private function transformCollection( $lessons ) {
-		return array_map( [ $this, 'transform' ], $lessons->toArray() );
-	}
-
-	private function transform( $lesson ) {
-		return [
-			'title'    => $lesson['title'],
-			'body'     => $lesson['body'],
-			'active'   => (bool) $lesson['some_bool'],
-			'show_url' => route( 'lessons.show', $lesson['id'] ),
-		];
 	}
 }
