@@ -9,7 +9,7 @@ use Response;
  *
  * @package \App\Http\Controllers
  */
-class APiController extends Controller {
+class ApiController extends Controller {
 	const HTTP_NOT_FOUND = 404;
 	const HTTP_INTERNAL_SERVER_ERROR = 500;
 	/**
@@ -27,7 +27,7 @@ class APiController extends Controller {
 	/**
 	 * @param int $statusCode
 	 *
-	 * @return  \App\Http\Controllers\APiController
+	 * @return  \App\Http\Controllers\ApiController
 	 */
 	public function setStatusCode( int $statusCode ) {
 		$this->statusCode = $statusCode;
