@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Contracts\Pagination\Paginator;
 use Response;
 
 /**
@@ -61,6 +62,27 @@ class ApiController extends Controller {
 	 */
 	public function respond( $data, $header = [] ) {
 		return Response::json( $data, $this->getStatusCode(), $header );
+	}
+
+	/**
+	 * @param Paginator $items
+	 *
+	 * @param array     $data
+	 *
+	 * @return mixed
+	 */
+	protected function respondWithPagination( Paginator $items, $data ) {
+
+		$data = array_merge( $data, [
+			'paginator' => [
+				'total_count'  => $items->total(),
+				'total_page'   => $items->total() / $items->perPage(),
+				'current_page' => $items->currentPage(),
+				'limit'        => (integer) $items->perPage(),
+			]
+		] );
+
+		return $this->respond( $data );
 	}
 
 	/**

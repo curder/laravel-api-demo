@@ -34,11 +34,10 @@ class LessonController extends ApiController {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function index() {
-		$lessons = Lesson::all();
+		$limit   = request( 'limit', 3 );
+		$lessons = Lesson::paginate( $limit );
 
-		return $this->respond( [
-			'data' => $this->lessonTransformer->transformCollection( $lessons->all() ),
-		] );
+		return $this->respondWithPagination( $lessons, [ 'data' => $this->lessonTransformer->transformCollection( $lessons->all() ) ] );
 	}
 
 	/**
@@ -93,4 +92,6 @@ class LessonController extends ApiController {
 	public function destroy( $id ) {
 		//
 	}
+
+
 }
