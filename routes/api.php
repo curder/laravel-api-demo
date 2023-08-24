@@ -27,6 +27,5 @@ Route::group(['prefix' => 'products'], function () {
     Route::apiResource('/{product}/reviews', ReviewController::class)
         ->only(['index', 'store', 'update', 'destroy']);
 });
+Route::get('lessons/tags/{id?}', [TagsController::class, 'index']);
 Route::apiResource('/lessons', LessonController::class)->only(['index', 'show']);
-Route::apiResource('/tags', TagsController::class)->only(['index', 'show']);
-Route::get('lesson/{id}/tags', [TagsController::class, 'index']);

@@ -4,17 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\Tag;
 use App\Models\Lesson;
+use Illuminate\Http\JsonResponse;
 use App\Http\Transformers\TagTransformer;
+use Illuminate\Database\Eloquent\Collection;
 
 /**
  * Class TagsController
  */
 class TagsController extends ApiController
 {
-    /**
-     * @var \App\Http\Transformers\TagTransformer
-     */
-    protected $tagTransformer;
+    protected TagTransformer $tagTransformer;
 
     /**
      * TagsController constructor.
@@ -24,27 +23,17 @@ class TagsController extends ApiController
         $this->tagTransformer = $tagTransformer;
     }
 
-    /**
-     * @return mixed
-     */
-    public function index($LessonId = null)
+    public function index($lesson_id = null): JsonResponse
     {
-        $tags = $this->getTags($LessonId);
+        $tags = $this->getTags($lesson_id);
 
         return $this->respond([
             'data' => $this->tagTransformer->transformCollection($tags->all()),
         ]);
     }
 
-    public function show($id)
+    protected function getTags($lesson_id): Collection
     {
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Collection|static[]
-     */
-    protected function getTags($LessonId)
-    {
-        return $LessonId ? Lesson::findOrFail($LessonId)->tags : Tag::all();
+        return $lesson_id ? optional(Lesson::query()->find($lesson_id))->tags : Tag::all();
     }
 }
