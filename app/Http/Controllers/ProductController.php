@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 use App\Http\Resources\Product\ProductResource;
 use App\Http\Resources\Product\ProductCollection;
 use App\Exceptions\ProductNotBelongsToUserException;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 /**
  * Class ProductController
@@ -20,43 +21,30 @@ class ProductController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api')->only(['store', 'update']);
+        $this->middleware('auth:api')
+            ->only(['store', 'update', 'destroy']);
     }
 
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): AnonymousResourceCollection
     {
-        return ProductCollection::collection(Product::paginate(20));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return ProductCollection::collection(Product::query()->paginate(20));
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return Response
      */
-    public function store(ProductRequest $request)
+    public function store(ProductRequest $request): Response
     {
-        $product = new Product;
-        $product->name = $request->name;
-        $product->detail = $request->description;
-        $product->stock = $request->stock;
-        $product->price = $request->price;
-        $product->name = $request->name;
-        $product->discount = $request->discount;
-
-        $product->save();
+        $product = Product::query()->create([
+            'name' => $request->name,
+            'detail' => $request->description,
+            'stock' => $request->stock,
+            'price' => $request->price,
+            'discount' => $request->discount,
+        ]);
 
         return response([
             'data' => new ProductResource($product),
@@ -74,23 +62,13 @@ class ProductController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Product $product)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
-     * @return Response
+     * @throws \Throwable
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, Product $product): Response
     {
-        $this->productUserCheck($product);
+        throw_if($request->user()->id !== $product->user_id, new ProductNotBelongsToUserException);
 
         $request['detail'] = $request->description;
         unset($request['description']);
@@ -103,23 +81,11 @@ class ProductController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @return Response
      */
-    public function destroy(Product $product)
+    public function destroy(Product $product): Response
     {
         $product->delete();
 
         return response(null, Response::HTTP_NO_CONTENT);
-    }
-
-    /**
-     * @throws ProductNotBelongsToUserException
-     */
-    protected function productUserCheck($product)
-    {
-        if (auth()->id() !== $product->user_id) {
-            throw new ProductNotBelongsToUserException;
-        }
     }
 }

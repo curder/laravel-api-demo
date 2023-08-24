@@ -2,6 +2,10 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TagsController;
+use App\Http\Controllers\LessonController;
+use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,10 +22,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::ApiResource('/products', 'ProductController');
+Route::ApiResource('/products', ProductController::class);
 Route::group(['prefix' => 'products'], function () {
-    Route::apiResource('/{product}/reviews', 'ReviewController');
+    Route::apiResource('/{product}/reviews', ReviewController::class);
 });
-Route::ApiResource('/lessons', 'LessonController');
-Route::ApiResource('/tags', 'TagsController')->only(['index', 'show']);
-Route::get('lesson/{id}/tags', 'TagsController@index');
+Route::ApiResource('/lessons', LessonController::class);
+Route::ApiResource('/tags', TagsController::class)->only(['index', 'show']);
+Route::get('lesson/{id}/tags', [TagsController::class, 'index']);

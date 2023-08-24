@@ -6,10 +6,7 @@ use Exception;
 
 class ProductNotBelongsToUserException extends Exception
 {
-    /**
-     * @return array
-     */
-    public function render()
+    public function render(): array
     {
         return [
             'errors' => 'product not belongs to user.',
