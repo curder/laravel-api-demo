@@ -2,6 +2,7 @@
 
 use App\Models\Lesson;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
+
 use function Pest\Laravel\getJson;
 
 uses(LazilyRefreshDatabase::class);
