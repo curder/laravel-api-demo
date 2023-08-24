@@ -1,10 +1,11 @@
 <?php
+namespace Database\Seeders;
 
 use App\Lesson;
 use App\Models\Product;
 use App\Models\Review;
+use App\Models\User;
 use App\Tag;
-use App\User;
 use Illuminate\Database\Seeder;
 
 /**

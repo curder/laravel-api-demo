@@ -1,4 +1,5 @@
 <?php
+namespace Database\Factories;
 
 use App\Lesson;
 use Faker\Generator as Faker;

@@ -1,9 +1,10 @@
 <?php
+namespace Database\Factories;
 
-use App\User;
+use App\Models\User;
 use Faker\Generator as Faker;
 
-$factory->define(App\Models\Product::class, function (Faker $faker) {
+$factory->define(\App\Models\Product::class, function (Faker $faker) {
     return [
         'user_id' => function () {
             return User::all()->random();
