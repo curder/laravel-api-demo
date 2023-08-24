@@ -3,7 +3,6 @@
 use App\Models\User;
 use App\Models\Product;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
-
 use function Pest\Laravel\getJson;
 use function Pest\Laravel\actingAs;
 use function Pest\Laravel\postJson;
