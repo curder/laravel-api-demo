@@ -1,264 +1,264 @@
 {
-	"variables": [],
-	"info": {
-		"name": "Laravel-Api-Demo",
-		"_postman_id": "7e7776c0-8b25-c3d2-4a9e-388b153765de",
-		"description": "",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
-	},
-	"item": [
-		{
-			"name": "Products",
-			"description": "",
-			"item": [
-				{
-					"name": "Product All",
-					"request": {
-						"url": "http://laravel-api-demo.dev/api/products",
-						"method": "GET",
-						"header": [],
-						"body": {},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Product Show",
-					"request": {
-						"url": "http://laravel-api-demo.dev/api/products/1",
-						"method": "GET",
-						"header": [],
-						"body": {},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Product Create",
-					"request": {
-						"url": "http://laravel-api-demo.dev/api/products",
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "Authorization",
-								"value": "{{auth}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"name\": \"Iphone X\",\n\t\"description\": \"The Best ever phone with face ID\",\n\t\"price\": 100,\n\t\"stock\": 10,\n\t\"discount\": 50\n}"
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Product Update",
-					"request": {
-						"url": "http://laravel-api-demo.dev/api/products/1",
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "Authorization",
-								"value": "{{auth}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"name\": \"Iphone 8\",\n\t\"description\": \"The Best ever phone with face ID\",\n\t\"price\": 100,\n\t\"stock\": 10,\n\t\"discount\": 20\n}"
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Product Destory",
-					"request": {
-						"url": "http://laravel-api-demo.dev/api/products/1",
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "Authorization",
-								"value": "{{auth}}",
-								"description": ""
-							}
-						],
-						"body": {},
-						"description": ""
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Reviews",
-			"description": "",
-			"item": [
-				{
-					"name": "Reviews All",
-					"request": {
-						"url": "http://laravel-api-demo.dev/api/products/1/reviews",
-						"method": "GET",
-						"header": [],
-						"body": {},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Review Create",
-					"request": {
-						"url": "http://laravel-api-demo.dev/api/products/20/reviews",
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "Authorization",
-								"value": "{{auth}}",
-								"description": ""
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"customer\": \"anor\",\n\t\"star\": 3,\n\t\"review\": \"best thing on review\"\n}"
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Review Update",
-					"request": {
-						"url": "http://laravel-api-demo.dev/api/products/21/reviews/38",
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/x-www-form-urlencoded",
-								"description": ""
-							},
-							{
-								"key": "Authorization",
-								"value": "{{auth}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"customer\": \"anor\",\n\t\"star\": 3,\n\t\"review\": \"best thing on review\"\n}"
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Review Destory",
-					"request": {
-						"url": "http://laravel-api-demo.dev/api/products/20/reviews/259",
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "Authorization",
-								"value": "{{auth}}",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "OAuth",
-			"description": "",
-			"item": [
-				{
-					"name": "Get Token",
-					"request": {
-						"url": "http://laravel-api-demo.dev/oauth/token",
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"grant_type\": \"password\",\n\t\"client_id\" : 2,\n\t\"client_secret\": \"HRdHAzuiAcngvWtvNg10NdIVwQNynOPUnenwWGO2\",\n\t\"username\": \"curder@foxmail.com\",\n\t\"password\": \"secret\"\n}"
-						},
-						"description": ""
-					},
-					"response": []
-				}
-			]
-		}
-	]
+  "variables": [],
+  "info": {
+    "name": "Laravel-Api-Demo",
+    "_postman_id": "7e7776c0-8b25-c3d2-4a9e-388b153765de",
+    "description": "",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Products",
+      "description": "",
+      "item": [
+        {
+          "name": "Product All",
+          "request": {
+            "url": "http://laravel-api-demo.test/api/products",
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "name": "Product Show",
+          "request": {
+            "url": "http://laravel-api-demo.test/api/products/1",
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "name": "Product Create",
+          "request": {
+            "url": "http://laravel-api-demo.test/api/products",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "{{auth}}",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"name\": \"Iphone X\",\n\t\"description\": \"The Best ever phone with face ID\",\n\t\"price\": 100,\n\t\"stock\": 10,\n\t\"discount\": 50\n}"
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "name": "Product Update",
+          "request": {
+            "url": "http://laravel-api-demo.test/api/products/1",
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "{{auth}}",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"name\": \"Iphone 8\",\n\t\"description\": \"The Best ever phone with face ID\",\n\t\"price\": 100,\n\t\"stock\": 10,\n\t\"discount\": 20\n}"
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "name": "Product Destory",
+          "request": {
+            "url": "http://laravel-api-demo.test/api/products/1",
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "{{auth}}",
+                "description": ""
+              }
+            ],
+            "body": {},
+            "description": ""
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Reviews",
+      "description": "",
+      "item": [
+        {
+          "name": "Reviews All",
+          "request": {
+            "url": "http://laravel-api-demo.test/api/products/1/reviews",
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "name": "Review Create",
+          "request": {
+            "url": "http://laravel-api-demo.test/api/products/20/reviews",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "{{auth}}",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"customer\": \"anor\",\n\t\"star\": 3,\n\t\"review\": \"best thing on review\"\n}"
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "name": "Review Update",
+          "request": {
+            "url": "http://laravel-api-demo.test/api/products/21/reviews/38",
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "{{auth}}",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"customer\": \"anor\",\n\t\"star\": 3,\n\t\"review\": \"best thing on review\"\n}"
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "name": "Review Destory",
+          "request": {
+            "url": "http://laravel-api-demo.test/api/products/20/reviews/259",
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "Authorization",
+                "value": "{{auth}}",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "description": ""
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "OAuth",
+      "description": "",
+      "item": [
+        {
+          "name": "Get Token",
+          "request": {
+            "url": "http://laravel-api-demo.test/oauth/token",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"grant_type\": \"password\",\n\t\"client_id\" : 2,\n\t\"client_secret\": \"HRdHAzuiAcngvWtvNg10NdIVwQNynOPUnenwWGO2\",\n\t\"username\": \"curder@foxmail.com\",\n\t\"password\": \"secret\"\n}"
+            },
+            "description": ""
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
 }
