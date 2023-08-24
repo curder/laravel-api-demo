@@ -1,3 +1,6 @@
+[![Check & fix styling](https://github.com/curder/laravel-api-demo/actions/workflows/pint.yml/badge.svg?branch=master)](https://github.com/curder/laravel-api-demo/actions/workflows/pint.yml)
+[![Test Laravel Github action](https://github.com/curder/laravel-api-demo/actions/workflows/run-test.yml/badge.svg?branch=master)](https://github.com/curder/laravel-api-demo/actions/workflows/run-test.yml)
+
 # Introduction
 
 This project is about laravel reset-ful api demo.
@@ -7,6 +10,7 @@ git clone https://github.com/curder/laravel-api-demo.git
 
 cd laravel-api-demo && composer install && cp .env.example .env && php artisan key:generate
 ```
+
 change your database connection info, and run `php artisan migrate:refresh --seed`
 
 ## Get `access_token`
@@ -23,7 +27,7 @@ we can through postmen to send url `http://laravel-api-demo.dev/oauth/token`.
 Content-Type:application/json
 ```
 
-- `Body`'s `raw` data 
+- `Body`'s `raw` data
 
 ```
 {
@@ -34,13 +38,14 @@ Content-Type:application/json
 	"password": "aaaaaa" // our register password
 }
 ```
+
 to get the `Authorization` value.
 
 when we insert, update or delete data will use it.
 
 some postman.json data is [here](database/Laravel-Api-Demo.postman_collection.json)
 
-## Some Urls 
+## Some Urls
 
 ```
 GET /api/lessons Lesson List Data.
