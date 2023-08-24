@@ -22,10 +22,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::ApiResource('/products', ProductController::class);
+Route::apiResource('/products', ProductController::class);
 Route::group(['prefix' => 'products'], function () {
-    Route::apiResource('/{product}/reviews', ReviewController::class);
+    Route::apiResource('/{product}/reviews', ReviewController::class)
+        ->only(['index', 'store', 'update', 'destroy']);
 });
-Route::ApiResource('/lessons', LessonController::class);
-Route::ApiResource('/tags', TagsController::class)->only(['index', 'show']);
+Route::apiResource('/lessons', LessonController::class);
+Route::apiResource('/tags', TagsController::class)->only(['index', 'show']);
 Route::get('lesson/{id}/tags', [TagsController::class, 'index']);

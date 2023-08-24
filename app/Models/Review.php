@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  * @property \Carbon\Carbon $created_at
@@ -12,6 +13,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Review extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
         'customer', 'star', 'review',
     ];

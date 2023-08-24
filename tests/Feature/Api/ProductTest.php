@@ -58,9 +58,7 @@ it('can update self product', function () {
     $product = Product::factory()->create();
 
     actingAs($user, 'api')
-        ->putJson('api/products/'.$product->id, [
-            'description' => 'new description',
-        ])
+        ->putJson('api/products/'.$product->id)
         ->assertJson(['errors' => 'product not belongs to user.']);
 
     $product2 = Product::factory()->for($user)->create();
