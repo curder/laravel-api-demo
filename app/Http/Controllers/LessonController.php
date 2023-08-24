@@ -4,17 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\Lesson;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Http\JsonResponse;
 use App\Http\Transformers\LessonTransformer;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 /**
  * Class LessonController
  */
 class LessonController extends ApiController
 {
-    /**
-     * @var \App\Http\Transformers\LessonTransformer
-     */
-    protected $lessonTransformer;
+    protected LessonTransformer $lessonTransformer;
 
     /**
      * LessonController constructor.
@@ -26,13 +26,12 @@ class LessonController extends ApiController
 
     /**
      * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): JsonResponse
     {
         $limit = request('limit', 3);
-        $lessons = Lesson::paginate($limit);
+        /** @var LengthAwarePaginator $lessons */
+        $lessons = Lesson::query()->paginate($limit);
 
         return $this->respondWithPagination($lessons, ['data' => $this->lessonTransformer->transformCollection($lessons->all())]);
     }
@@ -50,28 +49,26 @@ class LessonController extends ApiController
 
     /**
      * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(int $id): JsonResponse
     {
-        $lesson = Lesson::find($id);
+        $lesson = Lesson::query()->find($id);
 
         if (! $lesson) {
             return $this->respondNotFound('Lesson dose not exists.');
         }
 
-        return $this->respond([
-            'date' => $this->lessonTransformer->transform($lesson),
-        ]);
+        return $this->setStatusCode(\Symfony\Component\HttpFoundation\Response::HTTP_OK)
+            ->respond([
+                'data' => $this->lessonTransformer->transform($lesson),
+            ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update(Request $request, $id)
     {
@@ -82,7 +79,7 @@ class LessonController extends ApiController
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy($id)
     {
