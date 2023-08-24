@@ -26,6 +26,8 @@ class DatabaseSeeder extends Seeder {
 	 * @return void
 	 */
 	public function run() {
+        // $this->call(UserSeeder::class);
+
 		$this->cleanDatabase();
 		factory( User::class, 5 )->create();
 		factory( Product::class, 50 )->create();
