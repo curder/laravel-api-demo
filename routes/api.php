@@ -14,17 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware( 'auth:api' )->get( '/user', function ( Request $request ) {
-	return $request->user();
-} );
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});
 
-Route::ApiResource( '/products', 'ProductController' );
-Route::group( [ 'prefix' => 'products' ], function () {
-	Route::apiResource( '/{product}/reviews', 'ReviewController' );
-} );
-Route::ApiResource( '/lessons', 'LessonController' );
-Route::ApiResource( '/tags', 'TagsController' )->only( [ 'index', 'show' ] );
-Route::get( 'lesson/{id}/tags', 'TagsController@index' );
-
-
-
+Route::ApiResource('/products', 'ProductController');
+Route::group(['prefix' => 'products'], function () {
+    Route::apiResource('/{product}/reviews', 'ReviewController');
+});
+Route::ApiResource('/lessons', 'LessonController');
+Route::ApiResource('/tags', 'TagsController')->only(['index', 'show']);
+Route::get('lesson/{id}/tags', 'TagsController@index');

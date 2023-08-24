@@ -4,28 +4,31 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLessonsTable extends Migration {
-	/**
-	 * Run the migrations.
-	 *
-	 * @return void
-	 */
-	public function up() {
-		Schema::create( 'lessons', function ( Blueprint $table ) {
+class CreateLessonsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('lessons', function (Blueprint $table) {
             $table->id();
-			$table->string( 'title' );
-			$table->text( 'body' );
-			$table->boolean( 'some_bool' );
-			$table->timestamps();
-		} );
-	}
+            $table->string('title');
+            $table->text('body');
+            $table->boolean('some_bool');
+            $table->timestamps();
+        });
+    }
 
-	/**
-	 * Reverse the migrations.
-	 *
-	 * @return void
-	 */
-	public function down() {
-		Schema::dropIfExists( 'lessons' );
-	}
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('lessons');
+    }
 }

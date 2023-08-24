@@ -1,4 +1,5 @@
 <?php
+
 namespace Database\Factories;
 
 use App\Models\Product;
@@ -11,6 +12,6 @@ $factory->define(\App\Models\Review::class, function (Faker $faker) {
         },
         'customer' => $faker->name,
         'review' => $faker->paragraph,
-        'star' => $faker->numberBetween(0, 5)
+        'star' => $faker->numberBetween(0, 5),
     ];
 });

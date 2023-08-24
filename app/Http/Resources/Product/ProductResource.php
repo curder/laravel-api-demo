@@ -9,7 +9,7 @@ class ProductResource extends Resource
     /**
      * Transform the resource into an array.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function toArray($request)
@@ -23,8 +23,8 @@ class ProductResource extends Resource
             'total_price' => round((1 - $this->discount / 100) * $this->discount, 2),
             'rating' => $this->reviews->count() > 0 ? round($this->reviews->sum('star') / $this->reviews->count()) : '',
             'href' => [
-                'reviews' => route('reviews.index', $this)
-            ]
+                'reviews' => route('reviews.index', $this),
+            ],
         ];
     }
 }

@@ -1,10 +1,12 @@
 <?php
+
 namespace Database\Factories;
+
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use App\Models\User;
-use Faker\Generator as Faker;
 use Illuminate\Support\Str;
+use Faker\Generator as Faker;
 
 /*
 |--------------------------------------------------------------------------

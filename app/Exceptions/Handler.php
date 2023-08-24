@@ -2,12 +2,13 @@
 
 namespace App\Exceptions;
 
-use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
 {
     use ExceptionTrait;
+
     /**
      * The list of the inputs that are never flashed to the session on validation exceptions.
      *
@@ -33,7 +34,6 @@ class Handler extends ExceptionHandler
      * Render an exception into an HTTP response.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Throwable  $exception
      * @return \Symfony\Component\HttpFoundation\Response
      *
      * @throws \Throwable
@@ -43,6 +43,7 @@ class Handler extends ExceptionHandler
         if ($request->expectsJson()) {
             return $this->apiException($request, $exception);
         }
+
         return parent::render($request, $exception);
     }
 }
