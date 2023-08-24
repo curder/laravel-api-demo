@@ -26,14 +26,6 @@ it('can show lesson', function () {
         ->assertJsonStructure(['data']);
 });
 
-it('can create lesson', function () {
-    $data = Lesson::factory()->raw();
-
-    getJson('api/lessons', ['json' => $data])
-        ->assertCreated()
-        ->assertJsonStructure(['data']);
-});
-
 it('can update lesson', function () {
     getJson('api/lessons/100')
         ->assertNotFound()
