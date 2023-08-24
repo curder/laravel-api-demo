@@ -16,8 +16,8 @@ class LessonTagTableSeeder extends Seeder
     {
         $faker = Faker::create();
 
-        $lesson_ids = \App\Lesson::pluck('id')->toArray();
-        $tag_ids = \App\Tag::pluck('id')->toArray();
+        $lesson_ids = \App\Models\Lesson::pluck('id')->toArray();
+        $tag_ids = \App\Models\Tag::pluck('id')->toArray();
 
         foreach (range(1, 30) as $index) {
             DB::table('lesson_tag')->insert([

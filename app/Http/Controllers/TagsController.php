@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Tag;
-use App\Lesson;
+use App\Models\Tag;
+use App\Models\Lesson;
 use App\Http\Transformers\TagTransformer;
 
 /**

@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Tag;
-use App\Lesson;
+use App\Models\Tag;
 use App\Models\User;
+use App\Models\Lesson;
 use App\Models\Review;
 use App\Models\Product;
 use Illuminate\Database\Seeder;

@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Lesson;
+use App\Models\Lesson;
 use Faker\Generator as Faker;
 
 $factory->define(Lesson::class, function (Faker $faker) {
